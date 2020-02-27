@@ -12,6 +12,8 @@ let dev_db_url = `mongodb://admin:sa@cluster0-shard-00-00-etdd9.mongodb.net:2701
 `;
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB,{ useNewUrlParser: true });
+mongoose.set('useFindAndModify', false);
+
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
